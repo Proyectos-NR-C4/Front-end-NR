@@ -16,9 +16,9 @@ const SidebarLinks = () => {
 const Logo = () => {
   return (
     <div className="py-3 w-full flex flex-col items-center justify-center">
-      <img src="logo.png" alt="Logo" className="h-16" />
+      <img src="logo.ico" alt="Logo" className="h-16 rounded-t-xl" />
       <span className="my-2 text-xl font-bold text-center">
-        Título de Mi Aplicación
+        Gestion de Proyectos TECH5
       </span>
     </div>
   );
