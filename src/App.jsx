@@ -10,9 +10,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import Index from "pages/Index";
-import Page2 from "pages/Page2";
-import IndexCategory1 from "pages/category1/Index";
-import Category1 from "pages/category1/CategoryPage1";
 import IndexUsuarios from "pages/usuarios";
 import EditarUsuario from "pages/usuarios/editar";
 import "styles/globals.css";
@@ -22,6 +19,10 @@ import Register from "pages/auth/register";
 import Login from "pages/auth/login";
 import { AuthContext } from "context/authContext";
 import jwt_decode from "jwt-decode";
+import { IndexInscripcion } from "pages/inscripciones/Index";
+import IndexAvance from "pages/avances";
+import IndexProyectos from "pages/proyectos";
+import EditarProyecto from "pages/proyectos/editar";
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -87,9 +88,13 @@ function App() {
                   path="/usuarios/editar/:_id"
                   element={<EditarUsuario />}
                 />
-                <Route path="page2" element={<Page2 />} />
-                <Route path="category1" element={<IndexCategory1 />} />
-                <Route path="category1/page1" element={<Category1 />} />
+                <Route path="proyectos" element={<IndexProyectos />} />
+                <Route
+                  path="/proyectos/editar/:_id"
+                  element={<EditarProyecto />}
+                />
+                <Route path="avance" element={<IndexAvance />} />
+                <Route path="inscripcion" element={<IndexInscripcion />} />
               </Route>
               <Route path="/auth" element={<AuthLayouth />}>
                 <Route path="register" element={<Register />} />
