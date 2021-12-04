@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Inscripcion = () => {
-  return <div>pagina /inscripciones/inscripcion</div>;
+  return <div>Esta es la pagina de inscripcion</div>;
 };
 
 export default Inscripcion;
