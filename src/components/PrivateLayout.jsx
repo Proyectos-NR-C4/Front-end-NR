@@ -8,7 +8,7 @@ const PrivateLayout = ({ roleList, children }) => {
   }
   return (
     <div className="text-9xl text-red-500">
-      No está autorizado para ver esta página
+      No está autorizado para ver la información de esta página
     </div>
   );
 };
