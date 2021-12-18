@@ -1,35 +1,58 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const EDITAR_PROYECTO = gql`
-  mutation EditarProyecto(
-    $_id: String!
-    $nombre: String!
-    $presupuesto: long!
-    $fechaInicio: Date!
-    $fechaFin: Date!
-    $estado: Enum_EstadoProyecto!
-    $fase: Enum_FaseProyecto!
-    $lider: String!
-  ) {
-    editarProyecto(
-      _id: $_id
-      presupuesto: $presupuesto
-      fechaIncio: $fechaIncio
-      fechaFin: $fechaFin
-      estado: $estado
-      fase: $fase
-      lider: $lider
-    ) {
+  mutation Mutation($_id: String!, $campos: camposProyecto!) {
+    editarProyecto(_id: $_id, campos: $campos) {
       _id
-      nombre
-      presupuesto
-      fechaInicio
-      fechaFin
       estado
-      fase
-      lider
     }
   }
 `;
 
-export { EDITAR_PROYECTO };
+const CREAR_PROYECTO = gql`
+  mutation CrearProyecto(
+    $nombre: String!
+    $presupuesto: Float!
+    $fechaInicio: Date!
+    $fechaFin: Date!
+    $lider: String!
+    $objetivos: [crearObjetivo]
+  ) {
+    crearProyecto(
+      nombre: $nombre
+      presupuesto: $presupuesto
+      fechaInicio: $fechaInicio
+      fechaFin: $fechaFin
+      lider: $lider
+      objetivos: $objetivos
+    ) {
+      _id
+    }
+  }
+`;
+
+const EDITAR_OBJETIVO = gql`
+  mutation EditarObjetivo(
+    $idProyecto: String!
+    $indexObjetivo: Int!
+    $campos: camposObjetivo!
+  ) {
+    editarObjetivo(
+      idProyecto: $idProyecto
+      indexObjetivo: $indexObjetivo
+      campos: $campos
+    ) {
+      _id
+    }
+  }
+`;
+
+const ELIMINAR_OBJETIVO = gql`
+  mutation Mutation($idProyecto: String!, $idObjetivo: String!) {
+    eliminarObjetivo(idProyecto: $idProyecto, idObjetivo: $idObjetivo) {
+      _id
+    }
+  }
+`;
+
+export { EDITAR_PROYECTO, CREAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO };

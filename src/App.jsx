@@ -12,23 +12,23 @@ import {
 import Index from "pages/Index";
 import IndexUsuarios from "pages/usuarios";
 import EditarUsuario from "pages/usuarios/editar";
-import "styles/globals.css";
-import "styles/tabla.css";
 import AuthLayouth from "layouts/AuthLayouth";
 import Register from "pages/auth/register";
 import Login from "pages/auth/login";
-import { AuthContext } from "context/authContext";
 import jwt_decode from "jwt-decode";
-import { IndexInscripcion } from "pages/inscripciones/Index";
 import IndexAvance from "pages/avances";
 import IndexProyectos from "pages/proyectos";
-import EditarProyecto from "pages/proyectos/editar";
+import IndexInscripciones from "pages/inscripciones/index";
+import NuevoProyecto from "pages/proyectos/NuevoProyecto";
+import { AuthContext } from "context/authContext";
+import "styles/globals.css";
+import "styles/tabla.css";
 
 // import PrivateRoute from 'components/PrivateRoute';
 
 const httpLink = createHttpLink({
-  //uri: "http://localhost:4000/graphql", 
-  uri: "https://servidor-back-qgl.herokuapp.com/graphql",
+  uri: "http://localhost:4000/graphql",
+  //uri: "https://servidor-back-qgl.herokuapp.com/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -85,17 +85,11 @@ function App() {
               <Route path="/" element={<PrivateLayout />}>
                 <Route path="" element={<Index />} />
                 <Route path="/usuarios" element={<IndexUsuarios />} />
-                <Route
-                  path="/usuarios/editar/:_id"
-                  element={<EditarUsuario />}
-                />
-                <Route path="proyectos" element={<IndexProyectos />} />
-                <Route
-                  path="/proyectos/editar/:_id"
-                  element={<EditarProyecto />}
-                />
-                <Route path="avance" element={<IndexAvance />} />
-                <Route path="inscripcion" element={<IndexInscripcion />} />
+                <Route path="/usuarios/editar/:_id" element={<EditarUsuario />}/>
+                <Route path="/proyectos" element={<IndexProyectos />} />
+                <Route path="/proyectos/nuevo" element={<NuevoProyecto />} />
+                <Route path="/avance" element={<IndexAvance />} />
+                <Route path="/inscripcion" element={<IndexInscripciones />} />
               </Route>
               <Route path="/auth" element={<AuthLayouth />}>
                 <Route path="register" element={<Register />} />
